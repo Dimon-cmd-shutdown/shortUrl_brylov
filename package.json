@@ -1,0 +1,24 @@
+{
+  "name": "brylov-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "startServer": "env-cmd -f ./config/.postgres.env nodemon ./src/back/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.6",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "sequelize-cli": "^6.4.1"
+  }
+}
