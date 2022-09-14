@@ -11,15 +11,15 @@ const shortUrlPage = async (req, res)=>{
     try{
         const url = req.body.url
         if(isValidUrl.isUri(url)) {
-            await Url.create({ value: url }, function (err, small) {
-                if (err) return handleError(err);
-                // saved!
-              });
-            return res.send(req.body.url)
+            const createdUrlObject = await Url.create({ value: url });
+            const token = await createdUrlObject.generateAuthToken()
+            const shortUrl = await createdUrlObject.generateShortUrl()
+            return res.send(shortUrl)
         }
         throw new Error()
+        
     }catch(e){
-        res.send('Not valid URL')
+        res.send('Not valid url')
     }
 }
 
