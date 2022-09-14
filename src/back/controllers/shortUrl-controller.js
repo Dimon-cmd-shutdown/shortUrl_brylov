@@ -14,7 +14,9 @@ const shortUrlPage = async (req, res)=>{
             const createdUrlObject = await Url.create({ value: url });
             const token = await createdUrlObject.generateAuthToken()
             const shortUrl = await createdUrlObject.generateShortUrl()
-            return res.send(shortUrl)
+            return res.render('index', {
+                shortUrl:shortUrl
+            })
         }
         throw new Error()
         
