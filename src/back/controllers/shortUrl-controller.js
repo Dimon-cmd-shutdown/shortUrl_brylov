@@ -3,8 +3,7 @@ const isValidUrl = require('valid-url')
 const Url = require('../db/models/UrlModel')
 
 const mainPageHtmlRender = (req, res) =>{
-    const htmlFilePath = path.join(__dirname, '../../front/index.html')
-    res.sendFile(htmlFilePath)
+     res.render('index')
 }
 
 const shortUrlPage = async (req, res)=>{
@@ -14,7 +13,7 @@ const shortUrlPage = async (req, res)=>{
             const createdUrlObject = await Url.create({ value: url });
             const token = await createdUrlObject.generateAuthToken()
             const shortUrl = await createdUrlObject.generateShortUrl()
-            return res.render('index', {
+            return res.render('shortUrl', {
                 shortUrl:shortUrl
             })
         }
