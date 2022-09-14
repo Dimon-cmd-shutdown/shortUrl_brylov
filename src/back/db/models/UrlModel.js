@@ -4,6 +4,10 @@ let randomstring = require("randomstring")
 const UrlSchema = new mongoose.Schema({
     value:'string',
     shortUrl:'string',
+    countOfHits:{
+        type:String,
+        default:0,
+    },
     tokens:[{
         token:{
             type:String,
