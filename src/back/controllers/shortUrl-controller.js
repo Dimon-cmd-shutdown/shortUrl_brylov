@@ -1,6 +1,5 @@
 const path = require('path')
 const isValidUrl = require('valid-url')
-const sequelize = require('../db/postgres')
 const Url = require('../db/models/UrlModel')
 
 const mainPageHtmlRender = (req, res) =>{
@@ -12,7 +11,10 @@ const shortUrlPage = async (req, res)=>{
     try{
         const url = req.body.url
         if(isValidUrl.isUri(url)) {
-            // await Url.create({value:url})
+            await Url.create({ value: url }, function (err, small) {
+                if (err) return handleError(err);
+                // saved!
+              });
             return res.send(req.body.url)
         }
         throw new Error()

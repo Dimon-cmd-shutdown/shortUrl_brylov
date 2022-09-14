@@ -1,13 +1,4 @@
-const { DataTypes } = require('sequelize')
-const sequelize = require('../postgres')
-
-const Url = sequelize.define('Url', {
-    value:{
-        type:DataTypes.STRING,
-        allowNull:false
-    }
-})
-
-module.exports = {
-    Url
-}
+const mongoose = require('mongoose')
+const UrlSchema = new mongoose.Schema({value:'string'})
+const Url = mongoose.model('Url',UrlSchema)
+module.exports = Url
