@@ -6,7 +6,19 @@ router.get('/', (req, res)=>{
     shortUrlController.mainPageHtmlRender(req, res)
 })
 
-router.post('/create_shortUrl', (req, res)=>{
+router.get('/inputUrl', (req, res)=>{
+    shortUrlController.urlInputPageHtmlRender(req, res)
+})
+
+router.post('/url', (req, res)=>{
+    shortUrlController.urlPage(req, res)
+})
+
+router.get('/create_shortUrl', (req, res)=>{
+    shortUrlController.createShortUrlPageHtmlRender(req, res)
+})
+
+router.post('/shortUrl', (req, res)=>{
     shortUrlController.shortUrlPage(req, res)
 })
 

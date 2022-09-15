@@ -13,7 +13,11 @@ const UrlSchema = new mongoose.Schema({
             type:String,
             required: true
         }
-    }]
+    }],
+    expireAt: { 
+        type: Date,  
+        expires: 2592000
+    }
 },
 {
     timestamps: true

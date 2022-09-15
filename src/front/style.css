@@ -10,6 +10,12 @@ h1 {
   width: 50%;
 }
 
+textarea{
+  text-decoration: none;
+  color: black;
+  
+}
+
 form {
   margin: auto;
   width: 50%;

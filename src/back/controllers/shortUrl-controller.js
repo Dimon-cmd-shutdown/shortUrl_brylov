@@ -6,6 +6,14 @@ const mainPageHtmlRender = (req, res) =>{
      res.render('index')
 }
 
+const createShortUrlPageHtmlRender = (req, res) =>{
+    res.render('url-input')
+}
+
+const urlInputPageHtmlRender = (req, res)=>{
+    res.render('shortUrl-input')
+}
+
 const shortUrlPage = async (req, res)=>{
     try{
         const url = req.body.url
@@ -24,9 +32,30 @@ const shortUrlPage = async (req, res)=>{
     }
 }
 
+const urlPage = async (req, res)=>{
+    try{
+        const shortUrl = req.body.shortUrl
+        if(shortUrl.length === 6) {
+            const url = await Url.find({shortUrl:shortUrl})
+            url[0].countOfHits++
+            await url[0].save()
+            return res.render('url', {
+                url:url[0].value
+            })
+        }
+        throw new Error()
+        
+    }catch(e){
+        res.send('Not valid short url')
+    }
+}
+
 
 module.exports = {
     name:'shortUrlController',
     mainPageHtmlRender,
     shortUrlPage,
+    createShortUrlPageHtmlRender,
+    urlInputPageHtmlRender,
+    urlPage
 }
