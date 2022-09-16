@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start":"node src/index.js",
     "startServer": "env-cmd -f ./config/.mongoose.env nodemon ./src/back/index.js"
   },
   "keywords": [],
